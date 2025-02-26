@@ -36,7 +36,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(index))
-        .route("/users", get(users))
+        .route("/users/:user_name", get(user))
         .with_state(shared_state);
 
     let listener = TcpListener::bind("0.0.0.0:4000").await.unwrap();
