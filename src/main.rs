@@ -11,18 +11,19 @@ use serde::Deserialize;
 use serde::Serialize;
 use thiserror::Error;
 use tokio::time::Instant;
+use tui::Terminal;
+use tui::backend::CrosstermBackend;
+use tui::layout::Alignment;
+use tui::layout::Constraint;
+use tui::layout::Direction;
+use tui::layout::Layout;
 use tui::style::Color;
 use tui::style::Style;
 use tui::widgets::Block;
 use tui::widgets::BorderType;
 use tui::widgets::Borders;
-use tui::widgets::Paragraph;
-use tui::Terminal;
-use tui::backend::CrosstermBackend;
-use tui::layout::Constraint;
-use tui::layout::Direction;
-use tui::layout::Layout;
 use tui::widgets::ListState;
+use tui::widgets::Paragraph;
 
 const DB_PATH: &str = "./data/db.json";
 
@@ -112,10 +113,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let copyright = Paragraph::new("pet-CLI 2025 - all rights reserved")
                 .style(Style::default().fg(Color::LightCyan))
                 .alignment(Alignment::Center)
-                .block(Block::default().borders(Borders::ALL))
-                .style(Style::default().fg(Color::White))
-                .title("Copyright")
-                .border_type(BorderType::Plain);
-        );
+                .block(
+                    Block::default()
+                        .borders(Borders::ALL)
+                        .style(Style::default().fg(Color::White))
+                        .title("Copyright")
+                        .border_type(BorderType::Plain),
+                );
+        });
     }
 }
