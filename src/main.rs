@@ -305,7 +305,7 @@ fn read_db() -> Result<Vec<Pet>, Error> {
 }
 
 fn add_random_pet_to_db() -> Result<Vec<Pet>, Error> {
-    let mut rng = rand::rngs()
+    let mut rng = rand::;
     let db_content = fs::read_to_string(DB_PATH)?;
     let mut parsed: Vec<Pet> = serde_json::from_str(&db_content)?;
     let catsdogs = match rng.gen_range(0, 1) {
